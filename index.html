@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anishika 🌷</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: radial-gradient(circle at top, #32152f, #100719 70%);
+      font-family: "Segoe UI", sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 35px 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .flower {
+      font-size: 105px;
+      animation: sway 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 22px #ff4fa3);
+      margin-bottom: 38px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 7vw, 48px);
+      color: #ffb6d9;
+      text-shadow: 0 0 20px #ff4fa3;
+    }
+
+    button {
+      margin-top: 55px;
+      width: min(100%, 390px);
+      border: 2px solid #ff9aca;
+      background: #ff168f;
+      color: white;
+      border-radius: 60px;
+      padding: 23px 16px;
+      font-size: clamp(18px, 4.5vw, 24px);
+      cursor: pointer;
+      box-shadow: 0 0 28px #ff42a1;
+      transition: transform .3s;
+    }
+
+    button:active { transform: scale(.96); }
+
+    #reply {
+      display: none;
+      margin-top: 35px;
+      color: #ffd4e9;
+      font-size: clamp(19px, 5vw, 25px);
+      line-height: 1.9;
+      animation: appear 1s ease;
+      text-shadow: 0 0 12px #ff4fa3;
+    }
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      z-index: 1;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-8deg) scale(1); }
+      50% { transform: rotate(8deg) scale(1.1); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="flower" aria-hidden="true">🌷</div>
+    <h1>Hey Anishika 🤭</h1>
+
+    <button id="revealButton" type="button" onclick="showMessage()">
+      Tap here, Anishika 🤭
+    </button>
+
+    <div id="reply" aria-live="polite">
+      May I get your number? 🥺💕<br>
+      Pretty please? 🥺👉👈<br>
+      I promise I'm worth a text and call! 🤭🙄
+    </div>
+  </main>
+
+  <script>
+    function showMessage() {
+      document.getElementById("reply").style.display = "block";
+      document.getElementById("revealButton").textContent = "Hehe, now your turn 🤭";
+      createFlowers(25);
+    }
+
+    function createFlowers(count) {
+      const flowers = ["🌸", "🌷", "🌹", "🌺"];
+
+      for (let i = 0; i < count; i++) {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+        petal.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.fontSize = (18 + Math.random() * 25) + "px";
+        petal.style.animationDuration = (4 + Math.random() * 5) + "s";
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 10000);
+      }
+    }
+
+    setInterval(() => createFlowers(2), 1500);
+  </script>
+</body>
+</html>
